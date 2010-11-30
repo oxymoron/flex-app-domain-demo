@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+ ~ Developer: Andrey Zubkov
+ ~ Date: Nov 30, 2010
+ ~ Time: 11:52:40 PM
+-->
+<project name="Project Name" default="all" basedir=".">
+
+    <target name="init" description="Init">
+    </target>
+    
+    <target name="clean" description="Clean">
+    </target>
+    
+    <target name="build" description="Build" depends="init">
+    </target>
+    
+    <target name="dist" description="Distribution" depends="build">
+    </target>
+    
+    <target name="all" description="All" depends="clean,dist"/>
+
+</project>

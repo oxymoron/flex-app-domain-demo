@@ -1,0 +1,8 @@
+# Git ignore file
+
+# System
+.*
+!.gitignore
+
+# Intellij IDEA
+*.iml
