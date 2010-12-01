@@ -5,4 +5,36 @@
  ~ Time: 11:20:23 PM
 -->
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+
+
+
+    <mx:Script><![CDATA[
+
+        import mx.controls.SWFLoader;
+        import mx.managers.PopUpManager; PopUpManager;
+
+        private function loadApp1Handler(event:MouseEvent):void {
+            var loader:SWFLoader = new SWFLoader();
+            appsContainer.addChild(loader);
+            //loader.trustContent = false;
+            loader.loadForCompatibility = true;
+            loader.source = "App1.swf";
+        }
+
+        private function loadApp2Handler(event:MouseEvent):void {
+            var loader:SWFLoader = new SWFLoader();
+            appsContainer.addChild(loader);
+            //loader.trustContent = false;
+            loader.loadForCompatibility = true;
+            loader.source = "App2.swf";
+        }
+
+
+    ]]></mx:Script>
+
+    <mx:Button label="Load App1" click="loadApp1Handler(event)"/>
+    <mx:Button label="Load App2" click="loadApp2Handler(event)"/>
+    <mx:HBox id="appsContainer"/>
+
+
 </mx:Application>

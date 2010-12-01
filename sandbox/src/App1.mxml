@@ -5,4 +5,21 @@
  ~ Time: 11:19:59 PM
 -->
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+
+    <mx:Script><![CDATA[
+
+        import mx.controls.Alert;
+        import mx.managers.PopUpManager; PopUpManager;
+
+        private function clickHandler(event:MouseEvent):void {
+            Alert.show("I'm Alert from App1");        
+        }
+
+    ]]></mx:Script>
+
+
+    <mx:Label text="I'm App1"/>
+
+    <mx:Button label="Click Me" click="clickHandler(event)"/>
+
 </mx:Application>

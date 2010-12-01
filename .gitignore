@@ -4,5 +4,8 @@
 .*
 !.gitignore
 
+#Build procedure
+*/build
+
 # Intellij IDEA
 *.iml

@@ -1,23 +1,57 @@
 <?xml version="1.0"?>
-<!--
+<!--                                                                                                   
  ~ Developer: Andrey Zubkov
  ~ Date: Nov 30, 2010
  ~ Time: 11:52:40 PM
 -->
-<project name="Project Name" default="all" basedir=".">
+<project name="Sandbox application" default="all" basedir=".">
+
+    <property name="FLEX3_HOME" value="/home/oxymoron/projects/flex-sdk/flex-sdk-3.5"/>
+    <property name="FLEX4_HOME" value="/home/oxymoron/projects/flex-sdk/flex-sdk-4.1"/>
+
+
+    <property name="build" value="build"/>
+
+    <!--<taskdef-->
+        <!--uri="flex:flex4"-->
+        <!--resource="flexTasks.tasks"-->
+        <!--classpath="${FLEX4_HOME}/ant/lib/flexTasks.jar"/>-->
+
+    <target name="swf">
+        <taskdef
+            resource="flexTasks.tasks"
+            classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+        <mxmlc
+            file="src/${appname}.mxml"
+            output="${build}/${appname}.swf"
+            use-network="false"
+            static-link-runtime-shared-libraries="true"/>    
+    </target>
+    
 
     <target name="init" description="Init">
+        <mkdir dir="${build}"/>        
     </target>
     
     <target name="clean" description="Clean">
+        <delete dir="${build}"/>
     </target>
     
     <target name="build" description="Build" depends="init">
+        <antcall target="swf">
+            <param name="FLEX_HOME" value="${FLEX4_HOME}"/>
+            <param name="appname" value="App1"/>
+        </antcall>
+        <antcall target="swf">
+            <param name="FLEX_HOME" value="${FLEX3_HOME}"/>
+            <param name="appname" value="App2"/>
+        </antcall>
+        <antcall target="swf">
+            <param name="FLEX_HOME" value="${FLEX4_HOME}"/>
+            <param name="appname" value="Main"/>
+        </antcall>
     </target>
-    
-    <target name="dist" description="Distribution" depends="build">
-    </target>
-    
-    <target name="all" description="All" depends="clean,dist"/>
+
+    <target name="all" description="All" depends="clean, build"/>
 
 </project>
